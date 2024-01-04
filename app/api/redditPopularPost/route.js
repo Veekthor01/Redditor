@@ -6,32 +6,42 @@ import { NextResponse } from "next/server";
 connectDB();
 
 export async function GET() {
+  // Check if there are any posts in the database
+  let posts = await RedditPopularPost.find();
+  if (posts.length > 0) {
+     // If there are posts, return them
+    return NextResponse.json({ posts }, { status: 200 });
+  }
+
   const url = 'https://old.reddit.com/r/popular';
+  const response = await fetch(url);
+  const html = await response.text();
+  const $ = cheerio.load(html);
 
-  const response = await fetch(url,
-    {
-        next: {
-          revalidate: 0,
-        },
-    }
-        );
-const html = await response.text();
-//console.log(html);
-const $ = cheerio.load(html);
-
-  const posts = [];
+  posts = [];
   $('div.thing').each((index, element) => {
     const subreddit = $(element).find('a.subreddit').text().trim();
     const title = $(element).find('p.title > a').text().trim();
-    const content = $(element).find('div.usertext-body').text().trim();
+    const url = $(element).find('p.title > a').attr('href');
     const author = $(element).find('a.author').text().trim();
     const timestamp = $(element).find('time').attr('datetime');
-    posts.push({ subreddit, title, content, author, timestamp });
+    posts.push({ subreddit, title, author, timestamp, url });
   });
-
-  //console.log(posts);
 
   await RedditPopularPost.insertMany(posts);
 
-  return NextResponse.json({ posts }, { status: 200 });
+  // Fetch the data from the database
+  const dbPosts = await RedditPopularPost.find();
+
+  return NextResponse.json({ posts: dbPosts }, { status: 200 });
 };
+
+export async function DELETE() {
+    // Delete all posts with no img
+    await RedditPopularPost.deleteMany({});
+  
+    // Fetch the data from the database
+    const dbPosts = await RedditPopularPost.find();
+  
+    return NextResponse.json({ posts: dbPosts }, { status: 200 });
+  }
