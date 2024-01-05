@@ -35,13 +35,3 @@ export async function GET() {
 
   return NextResponse.json({ posts: dbPosts }, { status: 200 });
 };
-
-export async function DELETE() {
-    // Delete all posts with no img
-    await RedditPopularPost.deleteMany({});
-  
-    // Fetch the data from the database
-    const dbPosts = await RedditPopularPost.find();
-  
-    return NextResponse.json({ posts: dbPosts }, { status: 200 });
-  }
