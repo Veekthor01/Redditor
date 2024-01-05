@@ -7,11 +7,7 @@ const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 export async function getPopularPosts() {
     const posts = `${backendUrl}/api/redditPopularPost`;
     try { 
-        const response = await fetch(posts, {
-            next: {
-              revalidate: 0,
-            },
-        });
+        const response = await fetch(posts);
         const data = await response.json();
         return data.posts;
     } catch (err) {
