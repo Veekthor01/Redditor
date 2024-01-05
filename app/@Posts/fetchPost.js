@@ -1,7 +1,7 @@
-//const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export async function getPosts() {
-    const posts = `http://localhost:3000/api/redditPost`;
+    const posts = `${backendUrl}/api/redditPost`;
     try { 
         const response = await fetch(posts);
         const data = await response.json();
