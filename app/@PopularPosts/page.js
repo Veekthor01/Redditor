@@ -1,4 +1,4 @@
-'use client'
+/*'use client'
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import './popularPosts.css';
@@ -52,9 +52,9 @@ export default function PopularPosts() {
             </ul>
         </div>
     );
-}
+} */
 
-/*import Link from 'next/link';
+import Link from 'next/link';
 import delay from '@/lib/delay';
 import './popularPosts.css';
 
@@ -98,4 +98,4 @@ export default async function PopularPosts() {
             </ul>
         </div>
     );
-} */
+} 

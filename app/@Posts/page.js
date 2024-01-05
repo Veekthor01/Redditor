@@ -1,4 +1,4 @@
-'use client';
+/*'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
@@ -76,9 +76,9 @@ export default function Posts() {
           </div>
         </div>
       );
-  }
+  } */
 
-/*import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { getPosts } from './fetchPost';
@@ -145,4 +145,4 @@ export default function Posts() {
           </div>
         </div>
       );
-  } */
+  }
