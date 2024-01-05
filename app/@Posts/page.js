@@ -77,7 +77,7 @@ export default function Posts() {
         </div>
       );
   } */
-
+'use client'
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
