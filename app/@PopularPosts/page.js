@@ -2,10 +2,10 @@ import Link from 'next/link';
 import delay from '@/lib/delay';
 import './popularPosts.css';
 
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+//const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export async function getPopularPosts() {
-    const posts = `${backendUrl}/api/redditPopularPost`;
+    const posts = `http://localhost:3000/api/redditPopularPost`;
     try { 
         const response = await fetch(posts);
         const data = await response.json();
