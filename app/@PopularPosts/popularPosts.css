@@ -1,0 +1,23 @@
+.scrollbar-hide {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.scrollbar-hide:hover,
+.scrollbar-hide:active {
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar-thumb,
+.scrollbar-hide:active::-webkit-scrollbar-thumb {
+    background-color: #4a5568;
+  border-radius: 6px;
+}
